@@ -1,0 +1,20 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  run-tests:
+    runs-on: ubunto-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-actions@v2
+        with:
+          build: npm run build
+          start: npm start
+      - name: jest run
+        run: npm test
+    
